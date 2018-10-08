@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VideoStream</title>
+	<style type="text/css">
+		#frameContainer {
+			width: 400px;
+			height: 250px;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="frameContainer"></div> -->
+	<img id="frameContainer"></img>
+	<script type="text/javascript">
+		const frameContainer = document.getElementById('frameContainer');
+		const ws = new WebSocket('ws://localhost:3000');
+
+		ws.onmessage = (reseiveData) => {
+			frameContainer.src = URL.createObjectURL(reseiveData.data);
+		};
+	</script>
+</body>
+</html>
